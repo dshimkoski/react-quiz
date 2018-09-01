@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV=prod webpack --mode production",
-    "start": "NODE_ENV=dev webpack-dev-server --hot --mode development --open",
+    "build": "cross-env NODE_ENV=prod webpack --mode production",
+    "start": "cross-env NODE_ENV=dev webpack-dev-server --hot --mode development --open",
     "start-api": "json-server --watch data/db.json --port 3001",
     "test": "jest"
   },
@@ -40,6 +40,7 @@
     "babel-plugin-styled-components": "^1.5.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "dotenv-webpack": "^1.5.7",
     "html-loader": "^0.5.5",
