@@ -1,22 +1,27 @@
-export const APP_LOAD = 'APP_LOAD'
-export const APP_LOAD_SUCCESS = 'APP_LOAD_SUCCESS'
-export const APP_LOAD_FAILURE = 'APP_LOAD_FAILURE'
+export const QUIZ_LOAD = 'QUIZ_LOAD'
+export const QUIZ_LOADING = 'QUIZ_LOADING'
+export const QUIZ_LOAD_SUCCESS = 'QUIZ_LOAD_SUCCESS'
+export const QUIZ_LOAD_FAILURE = 'QUIZ_LOAD_FAILURE'
 export const QUIZ_START = 'QUIZ_START'
 export const QUIZ_MARK_CURRENT_ANSWER = 'QUIZ_MARK_CURRENT_ANSWER'
 export const QUIZ_UPDATE_ANSWER = 'QUIZ_UPDATE_ANSWER'
 export const QUIZ_UPDATE_SCORES = 'QUIZ_UPDATE_SCORES'
 
-export const appLoad = () => ({
-  type: APP_LOAD
+export const quizLoad = () => ({
+  type: QUIZ_LOAD
 })
 
-export const appLoadSuccess = data => ({
-  type: APP_LOAD_SUCCESS,
+export const quizLoading = () => ({
+  type: QUIZ_LOADING
+})
+
+export const quizLoadSuccess = data => ({
+  type: QUIZ_LOAD_SUCCESS,
   data
 })
 
-export const appLoadFailure = error => ({
-  type: APP_LOAD_FAILURE,
+export const quizLoadFailure = error => ({
+  type: QUIZ_LOAD_FAILURE,
   error
 })
 

@@ -3,12 +3,12 @@ import { expectSaga, testSaga } from 'redux-saga-test-plan'
 import { call } from 'redux-saga/effects'
 import { push } from 'connected-react-router'
 import { onLocationChanged, LOCATION_CHANGE } from 'connected-react-router/lib/actions'
-import { watchAppLoad, runQuiz } from '../sagas'
+import { watchQuizLoad, runQuiz } from '../sagas'
 import { getQuestions } from '../selectors'
 import {
-  appLoad,
-  appLoadFailure,
-  appLoadSuccess,
+  quizLoad,
+  quizLoadFailure,
+  quizLoadSuccess,
   quizStart,
   quizMarkCurrentAnswer,
   quizUpdateAnswer,
@@ -24,20 +24,20 @@ describe('app load', () => {
   it('loads initial data', () => {
     const data = { results: [] }
     fetch.mockResponseOnce(JSON.stringify(data))
-    return expectSaga(watchAppLoad)
+    return expectSaga(watchQuizLoad)
       .provide([[call(fetch), data]])
-      .put(appLoadSuccess(data))
-      .dispatch(appLoad())
+      .put(quizLoadSuccess(data))
+      .dispatch(quizLoad())
       .silentRun()
   })
 
   it('handles load error', () => {
     const error = new Error('Bonk!')
     fetch.mockRejectOnce(error)
-    return expectSaga(watchAppLoad)
+    return expectSaga(watchQuizLoad)
       .provide([[call(fetch)]])
-      .put(appLoadFailure(error))
-      .dispatch(appLoad())
+      .put(quizLoadFailure(error))
+      .dispatch(quizLoad())
       .silentRun()
   })
 

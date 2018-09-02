@@ -3,32 +3,38 @@ import { push } from 'connected-react-router'
 import { LOCATION_CHANGE } from 'connected-react-router/lib/actions'
 import { getQuestions } from './selectors'
 import {
-  APP_LOAD,
+  QUIZ_LOAD,
   QUIZ_START,
   QUIZ_MARK_CURRENT_ANSWER,
-  appLoadSuccess,
-  appLoadFailure,
+  quizLoading,
+  quizLoadSuccess,
+  quizLoadFailure,
+  quizStart,
   quizUpdateAnswer,
   quizUpdateScores
 } from './actions'
 
-export function * watchAppLoad () {
-  yield takeEvery(APP_LOAD, loadApp)
+export function * watchQuizLoad () {
+  yield takeEvery(QUIZ_LOAD, loadQuiz)
 }
 
 export function * watchQuizStart () {
   yield takeEvery(QUIZ_START, runQuiz)
 }
 
-export function * loadApp () {
+export function * loadQuiz () {
   try {
-    const res = yield call(fetch, process.env.APP_LOAD_URL)
-    if (res) {
+    yield put(quizLoading())
+    const res = yield call(fetch, process.env.QUIZ_LOAD_URL)
+    if (res.status >= 200 && res.status < 300) {
       const data = yield call([res, res.json])
-      yield put(appLoadSuccess(data))
+      yield put(quizLoadSuccess(data))
+      yield put(quizStart())
+    } else {
+      throw res
     }
   } catch (err) {
-    yield put(appLoadFailure(err))
+    yield put(quizLoadFailure(err))
   }
 }
 
@@ -60,7 +66,7 @@ export function * runQuiz () {
 
 export default function * rootSaga () {
   yield all([
-    watchAppLoad(),
+    watchQuizLoad(),
     watchQuizStart()
   ])
 }

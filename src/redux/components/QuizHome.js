@@ -1,9 +1,14 @@
 import { connect } from 'react-redux'
-import { quizStart } from '../actions'
+import { quizLoad } from '../actions'
 import QuizHome from '../../components/QuizHome'
 
-const mapDispatchToProps = dispatch => ({
-  start: () => dispatch(quizStart())
+const mapStateToProps = ({ quiz }) => ({
+  isError: quiz.isError,
+  isLoading: quiz.isLoading
 })
 
-export default connect(null, mapDispatchToProps)(QuizHome)
+const mapDispatchToProps = dispatch => ({
+  start: () => dispatch(quizLoad())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuizHome)
