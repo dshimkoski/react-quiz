@@ -1,5 +1,5 @@
-const Dotenv = require('dotenv-webpack');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack')
+const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   module: {
@@ -16,8 +16,8 @@ module.exports = {
         options: { minimize: true }
       }]
     }, {
-      test:/\.css$/,
-      use:['style-loader', 'css-loader']
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader']
     }]
   },
   plugins: [
@@ -29,4 +29,4 @@ module.exports = {
       filename: './index.html'
     })
   ]
-};
+}

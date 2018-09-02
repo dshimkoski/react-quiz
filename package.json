@@ -1,6 +1,7 @@
 {
   "name": "quiz",
   "version": "1.0.0",
+  "homepage": "https://dshimkoski.github.io/react-quiz/",
   "description": "",
   "main": "index.js",
   "scripts": {
