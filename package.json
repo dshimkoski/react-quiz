@@ -12,11 +12,23 @@
   },
   "jest": {
     "automock": false,
-    "setupFiles": ["./jest-polyfills.js"],
+    "setupFiles": [
+      "./jest-polyfills.js"
+    ],
     "setupTestFrameworkScriptFile": "<rootDir>/jest-setup.js"
   },
   "standard": {
-    "globals": ["beforeEach", "describe", "expect", "fetch", "it", "jest", "mount", "render", "shallow"]
+    "globals": [
+      "beforeEach",
+      "describe",
+      "expect",
+      "fetch",
+      "it",
+      "jest",
+      "mount",
+      "render",
+      "shallow"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -43,6 +55,7 @@
     "babel-plugin-styled-components": "^1.5.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "base-href-webpack-plugin": "^2.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "dotenv-webpack": "^1.5.7",

@@ -1,5 +1,6 @@
 const Dotenv = require('dotenv-webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin')
 
 module.exports = {
   module: {
@@ -27,6 +28,9 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html'
+    }),
+    new BaseHrefWebpackPlugin({
+      baseHref: process.env.NODE_ENV === 'dev' ? '/' : '/react-quiz/'
     })
   ]
 }
