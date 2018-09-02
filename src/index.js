@@ -13,9 +13,7 @@ import rootReducer from './redux/reducers'
 import rootSaga from './redux/sagas'
 import './global.css'
 
-const history = createBrowserHistory({
-  basename: process.env.NODE_ENV === 'dev' ? '/' : '/react-quiz/'
-})
+const history = createBrowserHistory({ basename: process.env.APP_BASENAME })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
