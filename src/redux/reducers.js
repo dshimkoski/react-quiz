@@ -13,7 +13,7 @@ const initalState = {
   scores: []
 }
 
-const quizReducer = (state = initalState, action) =>
+export const quizReducer = (state = initalState, action) =>
   produce(state, draft => {
     switch (action.type) {
       case APP_LOAD_SUCCESS:

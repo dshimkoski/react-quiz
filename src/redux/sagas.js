@@ -1,7 +1,7 @@
-/* global fetch */
 import { all, call, put, select, take, takeEvery } from 'redux-saga/effects'
 import { push } from 'connected-react-router'
 import { LOCATION_CHANGE } from 'connected-react-router/lib/actions'
+import { getQuestions } from './selectors'
 import {
   APP_LOAD,
   QUIZ_START,
@@ -32,16 +32,16 @@ export function * loadApp () {
   }
 }
 
-function * runQuiz () {
+export function * runQuiz () {
   let i = 0
   let navigate = true
-  const questions = yield select(state => state.quiz.questions)
+  const questions = yield select(getQuestions)
   while (i < questions.length) {
     if (navigate) {
       yield put(push('/card/' + i))
     }
     const result = yield take([ QUIZ_MARK_CURRENT_ANSWER, LOCATION_CHANGE ])
-    if (result.payload) {
+    if (result.type === LOCATION_CHANGE) {
       // update index if back button was pressed
       // allows user to change answers while in this loop
       navigate = result.payload.action === 'POP'
