@@ -13,9 +13,9 @@
   "jest": {
     "automock": false,
     "setupFiles": [
-      "./jest-polyfills.js"
+      "./config/jest-polyfills.js"
     ],
-    "setupTestFrameworkScriptFile": "<rootDir>/jest-setup.js"
+    "setupTestFrameworkScriptFile": "<rootDir>/config/jest-setup.js"
   },
   "standard": {
     "globals": [

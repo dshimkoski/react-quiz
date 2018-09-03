@@ -9,7 +9,6 @@ import {
   quizLoad,
   quizLoadFailure,
   quizLoadSuccess,
-  quizStart,
   quizMarkCurrentAnswer,
   quizUpdateAnswer,
   quizUpdateScores,
@@ -42,7 +41,7 @@ describe('app load', () => {
   })
 
   it('runs the quiz', () => {
-    testSaga(runQuiz, quizStart())
+    testSaga(runQuiz)
       .next()
       .select(getQuestions)
       .next([1, 2])

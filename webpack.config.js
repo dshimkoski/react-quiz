@@ -23,7 +23,7 @@ module.exports = {
   },
   plugins: [
     new Dotenv({
-      path: './.' + process.env.NODE_ENV + '.env'
+      path: './config/.' + process.env.NODE_ENV + '.env'
     }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
