@@ -26,13 +26,12 @@ export function * loadQuiz () {
   try {
     yield put(quizLoading())
     const res = yield call(fetch, process.env.QUIZ_LOAD_URL)
-    if (res.status >= 200 && res.status < 300) {
-      const data = yield call([res, res.json])
-      yield put(quizLoadSuccess(data))
-      yield put(quizStart())
-    } else {
+    if (!res.ok) {
       throw res
     }
+    const data = yield call([res, res.json])
+    yield put(quizLoadSuccess(data))
+    yield put(quizStart())
   } catch (err) {
     yield put(quizLoadFailure(err))
   }
